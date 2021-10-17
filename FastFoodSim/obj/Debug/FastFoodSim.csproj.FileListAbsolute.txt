@@ -1,0 +1,10 @@
+D:\Studing\Статкевич\FastFoodSim\FastFoodSim\bin\Debug\FastFoodSim.exe.config
+D:\Studing\Статкевич\FastFoodSim\FastFoodSim\bin\Debug\FastFoodSim.exe
+D:\Studing\Статкевич\FastFoodSim\FastFoodSim\bin\Debug\FastFoodSim.pdb
+D:\Studing\Статкевич\FastFoodSim\FastFoodSim\obj\Debug\FastFoodSim.csprojAssemblyReference.cache
+D:\Studing\Статкевич\FastFoodSim\FastFoodSim\obj\Debug\FastFoodSim.Form1.resources
+D:\Studing\Статкевич\FastFoodSim\FastFoodSim\obj\Debug\FastFoodSim.Properties.Resources.resources
+D:\Studing\Статкевич\FastFoodSim\FastFoodSim\obj\Debug\FastFoodSim.csproj.GenerateResource.cache
+D:\Studing\Статкевич\FastFoodSim\FastFoodSim\obj\Debug\FastFoodSim.csproj.CoreCompileInputs.cache
+D:\Studing\Статкевич\FastFoodSim\FastFoodSim\obj\Debug\FastFoodSim.exe
+D:\Studing\Статкевич\FastFoodSim\FastFoodSim\obj\Debug\FastFoodSim.pdb

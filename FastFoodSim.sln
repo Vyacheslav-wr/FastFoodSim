@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastFoodSim", "FastFoodSim\FastFoodSim.csproj", "{CDCB73B7-E3CC-46A7-A149-0D18ECCFF4D7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CDCB73B7-E3CC-46A7-A149-0D18ECCFF4D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDCB73B7-E3CC-46A7-A149-0D18ECCFF4D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDCB73B7-E3CC-46A7-A149-0D18ECCFF4D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDCB73B7-E3CC-46A7-A149-0D18ECCFF4D7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ABDE15B3-1758-41EE-8CE3-5F025FC23A51}
+	EndGlobalSection
+EndGlobal
