@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FastFoodSim.model
 {
-    class Order
+    public class Order
     {
         private int orderNum;
         private string customerName;

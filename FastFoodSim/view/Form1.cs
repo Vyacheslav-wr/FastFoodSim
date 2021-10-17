@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -17,7 +18,7 @@ namespace FastFoodSim
         private delegate void DeleteCallDelegate();
         private delegate void SafeCallDelegate(Customer customer);
         private delegate void DeleteCallDelegate2();
-        private delegate void SafeCallDelegate2(Customer customer);
+        private delegate void SafeCallDelegate2(Order order);
         private delegate void UpdateDelegate1();
         private delegate void ProgressDelegate1(int count);
         private static Thread customerPlaceOrder;
@@ -36,12 +37,14 @@ namespace FastFoodSim
 
         private void startButton_Click(object sender, EventArgs e)
         {
-            customerPlaceOrder = new Thread(new ParameterizedThreadStart(clientPlaceOrder.placeOrder));
-            cook = new Thread(new ParameterizedThreadStart(CookService.takeAndPlaceOrder));
-            customerTakeOrder = new Thread(clientPickUpOrder.takeOrder);
-            customerPlaceOrder.Start(customerTextBox.Text);
-            cook.Start(orderTextBox.Text);
-            customerTakeOrder.Start();
+          
+                customerPlaceOrder = new Thread(new ParameterizedThreadStart(clientPlaceOrder.placeOrder));
+                cook = new Thread(new ParameterizedThreadStart(CookService.takeAndPlaceOrder));
+                customerTakeOrder = new Thread(clientPickUpOrder.takeOrder);
+                customerPlaceOrder.Start(customerTextBox.Text);
+                cook.Start(orderTextBox.Text);
+                customerTakeOrder.Start();
+            
         }
 
         private void customerTextBox_TextChanged(object sender, EventArgs e)
@@ -100,24 +103,24 @@ namespace FastFoodSim
             }
         }
 
-        public void update2(Customer customer)
+        public void update2(Order order)
         {
-            updateSafely2(customer);
+            updateSafely2(order);
         }
 
-        public void updateSafely2(Customer customer)
+        public void updateSafely2(Order order)
         {
             if (listView2.InvokeRequired)
             {
                 var d = new SafeCallDelegate2(updateSafely2);
-                listView2.Invoke(d, new object[] { customer });
+                listView2.Invoke(d, new object[] { order });
             }
             else
             {
                 try
                 {
-                    int str = customer.getOrderNum();
-                    String str2 = customer.getName();
+                    int str = order.getOrderNum();
+                    String str2 = order.getCustomerName();
                     string[] raw = { str.ToString(), str2 };
                     ListViewItem lvi = new ListViewItem(raw);
                     listView2.Items.Add(lvi);

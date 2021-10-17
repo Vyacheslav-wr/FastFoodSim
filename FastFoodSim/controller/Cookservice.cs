@@ -16,7 +16,6 @@ namespace FastFoodSim.controller
             int myTime = Convert.ToInt32(time);
             while (true) {
                 Order order;
-                Customer cust = new Customer();
                 Thread.Sleep(1000);
                 try
                 {
@@ -26,7 +25,7 @@ namespace FastFoodSim.controller
                     {
                         (System.Windows.Forms.Application.OpenForms["Form1"] as Form1).delete();
                         (System.Windows.Forms.Application.OpenForms["Form1"] as Form1).queueUpdate1();
-                        (System.Windows.Forms.Application.OpenForms["Form1"] as Form1).progressQueue(1);
+                        (System.Windows.Forms.Application.OpenForms["Form1"] as Form1).progressQueue(order.getOrderNum());
                     }
                     Thread.Sleep(myTime*1000);
                     ta.PutOrder(order);
@@ -34,11 +33,9 @@ namespace FastFoodSim.controller
                     {
                         (System.Windows.Forms.Application.OpenForms["Form1"] as Form1).progressQueue(0);
                     }
-                    cust.setName(order.getCustomerName());
-                    cust.setOrderNum(order.getOrderNum());
                     if (System.Windows.Forms.Application.OpenForms["Form1"] != null)
                     {
-                        (System.Windows.Forms.Application.OpenForms["Form1"] as Form1).update2(cust);
+                        (System.Windows.Forms.Application.OpenForms["Form1"] as Form1).update2(order);
                     }
                    
                 }
