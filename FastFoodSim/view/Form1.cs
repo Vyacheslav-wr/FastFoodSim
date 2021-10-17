@@ -24,6 +24,7 @@ namespace FastFoodSim
         private static Thread customerPlaceOrder;
         private static Thread cook;
         private static Thread customerTakeOrder;
+        string compare1 = @"[0-9]+";
 
         public Form1()
         {
@@ -37,13 +38,18 @@ namespace FastFoodSim
 
         private void startButton_Click(object sender, EventArgs e)
         {
-          
+            if (Regex.IsMatch(customerTextBox.ToString(),compare1) && Regex.IsMatch(orderTextBox.ToString(), compare1))
+            {
                 customerPlaceOrder = new Thread(new ParameterizedThreadStart(clientPlaceOrder.placeOrder));
                 cook = new Thread(new ParameterizedThreadStart(CookService.takeAndPlaceOrder));
                 customerTakeOrder = new Thread(clientPickUpOrder.takeOrder);
                 customerPlaceOrder.Start(customerTextBox.Text);
                 cook.Start(orderTextBox.Text);
                 customerTakeOrder.Start();
+            }
+            else {
+                MessageBox.Show("Invalid input data", "Error");
+            }
             
         }
 
