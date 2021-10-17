@@ -21,9 +21,6 @@ namespace FastFoodSim
         private delegate void SafeCallDelegate2(Order order);
         private delegate void UpdateDelegate1();
         private delegate void ProgressDelegate1(int count);
-        private static Thread customerPlaceOrder;
-        private static Thread cook;
-        private static Thread customerTakeOrder;
         string compare1 = @"[0-9]+";
 
         public Form1()
@@ -40,12 +37,9 @@ namespace FastFoodSim
         {
             if (Regex.IsMatch(customerTextBox.ToString(),compare1) && Regex.IsMatch(orderTextBox.ToString(), compare1))
             {
-                customerPlaceOrder = new Thread(new ParameterizedThreadStart(clientPlaceOrder.placeOrder));
-                cook = new Thread(new ParameterizedThreadStart(CookService.takeAndPlaceOrder));
-                customerTakeOrder = new Thread(clientPickUpOrder.takeOrder);
-                customerPlaceOrder.Start(customerTextBox.Text);
-                cook.Start(orderTextBox.Text);
-                customerTakeOrder.Start();
+                ClientPlaceOrder.startPlaceOrder(Convert.ToInt32(customerTextBox.Text));
+                CookService.startCookService(Convert.ToInt32(orderTextBox.Text));
+                ClientPickUpOrder.startPickUp();
             }
             else {
                 MessageBox.Show("Invalid input data", "Error");
@@ -60,9 +54,9 @@ namespace FastFoodSim
 
         private void stopButton_Click(object sender, EventArgs e)
         {
-            customerPlaceOrder.Abort();
-            cook.Abort();
-            customerTakeOrder.Abort();
+            ClientPlaceOrder.abortPlaceOrder();
+            CookService.abortCookService();
+            ClientPickUpOrder.abortPickUp();
         }
 
         public void update(Customer customer) {

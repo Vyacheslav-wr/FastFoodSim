@@ -7,10 +7,21 @@ using System.Threading;
 
 namespace FastFoodSim.controller
 {
-    class clientPlaceOrder
+    public class ClientPlaceOrder
     {
         private static OrderQueue oq = OrderQueue.GetInstance();
         static int num = 0;
+        public static Semaphore semaphore = new Semaphore(0, 100);
+        private static Thread customerPlaceOrder;
+
+        public static void startPlaceOrder(int num) {
+            customerPlaceOrder = new Thread(new ParameterizedThreadStart(placeOrder));
+            customerPlaceOrder.Start(num);
+        }
+
+        public static void abortPlaceOrder() {
+            customerPlaceOrder.Abort();
+        }
         public static void placeOrder(Object time) {
             int myTime = Convert.ToInt32(time);
             while (true) {
@@ -25,6 +36,7 @@ namespace FastFoodSim.controller
                     (System.Windows.Forms.Application.OpenForms["Form1"] as Form1).queueUpdate1();
                 }
                 Thread.Sleep(myTime * 1000);
+                CookService.semaphore.Release();
             }
         }
     }

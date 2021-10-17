@@ -46,9 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="controller\clientPlaceOrder.cs" />
+    <Compile Include="controller\ClientPlaceOrder.cs" />
     <Compile Include="controller\CookService.cs" />
-    <Compile Include="controller\clientPickUpOrder.cs" />
+    <Compile Include="controller\ClientPickUpOrder.cs" />
     <Compile Include="controller\OrderToCookQueue.cs" />
     <Compile Include="controller\OrderToPickUpQueue.cs" />
     <Compile Include="view\Form1.cs">
